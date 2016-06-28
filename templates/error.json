@@ -1,6 +1,6 @@
 {
-    "status": "{{.Status}}",
-    "errorCode": "{{.ErrorCode}}",
+    "status": {{.Status}},
+    "errorCode": {{.ErrorCode}},
     "message": "{{.Message}}",
     "detailMessage":"{{.DetailMessage}}"
 }
