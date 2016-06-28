@@ -2,7 +2,7 @@ FROM busybox:ubuntu-14.04
 MAINTAINER Jacob <jacob@ntcon.co>
 
 ADD ./stage/tyk /bin/tyk
-ADD tyk.conf /etc/tyk/tyk.conf
+ADD ./develop/tyk.conf /etc/tyk/tyk.conf
 ADD templates/ /etc/tyk/templates/
 
 EXPOSE 80
