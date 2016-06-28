@@ -7,5 +7,5 @@ ADD / /opt/tyk-gateway/
 
 EXPOSE 80
 
-CMD ["/bin/tyk", "--conf=/opt/tyk-gateway/tyk.conf"]
+ENTRYPOINT ["/bin/tyk", "--conf=/opt/tyk-gateway/tyk.conf"]
 CMD []
