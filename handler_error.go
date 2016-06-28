@@ -15,10 +15,10 @@ import (
 
 // APIError is generic error object returned if there is something wrong with the request
 type APIError struct {
-	status int
+	Status int
 	Message string
-	errorCode int
-	detailMessage string
+	ErrorCode int
+	DetailMessage string
 }
 
 // ErrorHandler is invoked whenever there is an issue with a proxied request, most middleware will invoke
@@ -32,7 +32,7 @@ func (e ErrorHandler) HandleError(w http.ResponseWriter, r *http.Request, err st
 	if e.Spec.DoNotTrack {
 		// Need to return the correct error code!
 		w.WriteHeader(errCode)
-		thisError := APIError{Message:fmt.Sprintf("%s", err), status:errCode, errorCode:0, detailMessage:"tyk error"}
+		thisError := APIError{Message:fmt.Sprintf("%s", err), Status:errCode, ErrorCode:0, DetailMessage:"tyk error"}
 
 		templates.ExecuteTemplate(w, "error.json", &thisError)
 		if doMemoryProfile {
@@ -185,7 +185,7 @@ func (e ErrorHandler) HandleError(w http.ResponseWriter, r *http.Request, err st
 
 	log.Debug("Returning error header")
 	w.WriteHeader(errCode)
-	thisError := APIError{Message:fmt.Sprintf("%s", err), status:errCode, errorCode:0, detailMessage:"tyk error"}
+	thisError := APIError{Message:fmt.Sprintf("%s", err), Status:errCode, ErrorCode:0, DetailMessage:"tyk error"}
 
 	//thisError := APIError{fmt.Sprintf("%s", err)}
 	templates.ExecuteTemplate(w, "error.json", &thisError)
