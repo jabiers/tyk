@@ -3,8 +3,8 @@ MAINTAINER Jacob <jacob@ntcon.co>
 
 ADD ./stage/tyk /bin/tyk
 ADD ./develop/tyk.conf /etc/tyk/tyk.conf
-ADD templates /etc/tyk/templates
-
+#ADD templates /etc/tyk/templates
+COPY . /etc/tyk
 EXPOSE 80
 
 ENTRYPOINT ["/bin/tyk"]
