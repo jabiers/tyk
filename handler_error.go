@@ -32,7 +32,8 @@ func (e ErrorHandler) HandleError(w http.ResponseWriter, r *http.Request, err st
 	if e.Spec.DoNotTrack {
 		// Need to return the correct error code!
 		w.WriteHeader(errCode)
-		thisError := APIError{fmt.Sprintf("%s", err)}
+		thisError := APIError{Message:fmt.Sprintf("%s", err), status:errCode, errorCode:0, detailMessage:"tyk error"}
+
 		templates.ExecuteTemplate(w, "error.json", &thisError)
 		if doMemoryProfile {
 			pprof.WriteHeapProfile(profileFile)
